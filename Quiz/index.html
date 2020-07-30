@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <script src="js/jquery-3.5.1.js"></script>
+    <title>Quiz</title>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div id = "results"></div>
+      <h1>Lorem ipsum</h1>
+      <hr style="width: 100px; margin-top: 0;">
+      <form name="quizForm" onsubmit="return submitAnswers()">
+      <div class="quest one">
+        <p>Lorem ipsum dolor sit amet.?</p>
+        <div class="all-radio">
+          <label class="container-radio">One
+            <input type="radio" id="q1a" name="q1" value="a">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container-radio">Two
+            <input type="radio" id="q1b" name="q1" value="b">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container-radio">Three
+            <input type="radio" id="q1c" name="q1" value="c">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container-radio">Four
+            <input type="radio" id="q1d" name="q1" value="d">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+      <br>
+      <div class="quest two">
+        <p>Lorem ipsum dolor sit amet.?</p>
+        <div class="all-radio">
+          <label class="container-radio">One
+            <input type="radio" id="q2a" name="q2" value="a">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container-radio">Two
+            <input type="radio" id="q2b" name="q2" value="b">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container-radio">Three
+            <input type="radio" id="q2c" name="q2" value="c">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container-radio">Four
+            <input type="radio" id="q2d" name="q2" value="d">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+      <br>
+
+      <div class="quest three">
+        <p>Lorem ipsum dolor sit amet.?</p>
+        <div class="all-radio">
+          <label class="container-radio">One
+            <input type="radio" id="q3a" name="q3" value="a">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container-radio">Two
+            <input type="radio" id="q3b" name="q3" value="b">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container-radio">Three
+            <input type="radio" id="q3c" name="q3" value="c">
+            <span class="checkmark"></span>
+          </label>
+          <label class="container-radio">Four
+            <input type="radio" id="q3d" name="q3" value="d">
+            <span class="checkmark"></span>
+          </label>
+        </div>
+      </div>
+      <br>
+        <div class="btn-container">
+          <input type = "submit" class = "btn" onclick="checkAnswer()" value="Submit">
+        </div>     
+      </form>    
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  function submitAnswers(){
+    var total = 3;
+    var score = 0;
+
+    //Get User Input
+    var q1 = document.forms['quizForm']['q1'].value;
+    var q2 = document.forms['quizForm']['q2'].value;
+    var q3 = document.forms['quizForm']['q3'].value;
+
+    //Validation
+    //For loop starts with 1 - This is very important!
+    for(var i = 1; i <= total; i++){
+      if(eval('q' + i) === null || eval('q' + i) == ''){
+        alert('Hey! you missed question ' + i);
+        return false;
+      }
+    }
+
+    //Select correct answers
+    var answers = ["c", "b", "d"];
+
+    for(var i = 1; i <= total; i++){
+      //Check answers
+      if(eval('q' + i) == answers[i - 1]){
+        //right answer
+        score++;
+      }
+    }
+
+
+    var results = document.getElementById('results');
+
+    results.innerHTML = '<h3>You scored <span>' + score + '</span> out of <span>' + total + '</span></h3>';
+
+    return false;
+
+  }
+</script>
+</script>
+</html>
